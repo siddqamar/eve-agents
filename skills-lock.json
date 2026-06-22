@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "eve": {
+      "source": "vercel/eve",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "a89f32b293891b5e1668347f5dac4b52232aa8fa8a62f64a525a1dcfaa7ac6f7"
+    }
+  }
+}
