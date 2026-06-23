@@ -10,7 +10,7 @@ function getApiKey(): string {
   const key = process.env.APIFY_API_KEY;
   if (!key || key === "your_apify_api_key_here") {
     throw new Error(
-      "APIFY_API_KEY is not set. Add it to your .env file.",
+      "APIFY_API_KEY is not set. Replace the placeholder in .env or export a real Apify token before running the research workflow.",
     );
   }
   return key;

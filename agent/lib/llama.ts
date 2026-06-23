@@ -20,6 +20,7 @@ Each post must be extracted into this exact schema:
 {
   "author": "string (author name or handle from the post metadata)",
   "url": "string (the post URL from metadata)",
+  "createdAt": "string (post timestamp from metadata, or N/A if missing)",
   "techStack": "string (comma-separated tools, frameworks, or languages discussed — e.g. LangChain, CrewAI, Python — or N/A if none mentioned)",
   "problemStatement": "string (the core pain point or task the author is trying to automate or solve, max 80 words, or N/A)",
   "solutionOffered": "string (how the author addressed the problem, max 80 words, or N/A)",
@@ -46,6 +47,7 @@ function buildUserMessage(posts: NormalizedPost[]): string {
   const minimal = posts.map((p) => ({
     a: p.author,
     u: p.url,
+    d: p.createdAt,
     t: p.text.slice(0, 500), // cap text at 500 chars to prevent blowout
     l: p.likes,
     c: p.comments,
@@ -86,6 +88,7 @@ function parseAnalysisResponse(raw: string): AnalyzedPost[] {
   return parsed.map((item: Record<string, unknown>) => ({
     author: String(item.author ?? "N/A"),
     url: String(item.url ?? "N/A"),
+    createdAt: String(item.createdAt ?? "N/A"),
     techStack: String(item.techStack ?? "N/A"),
     problemStatement: String(item.problemStatement ?? "N/A"),
     solutionOffered: String(item.solutionOffered ?? "N/A"),

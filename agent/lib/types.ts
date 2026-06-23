@@ -32,6 +32,7 @@ export interface RawPost {
 export interface NormalizedPost {
   author: string;
   url: string;
+  createdAt: string;
   text: string;
   likes: string;
   comments: string;
@@ -45,6 +46,7 @@ export interface NormalizedPost {
 export interface AnalyzedPost {
   author: string;
   url: string;
+  createdAt: string;
   techStack: string;
   problemStatement: string;
   solutionOffered: string;
@@ -67,6 +69,7 @@ export function normalizePost(raw: RawPost): NormalizedPost {
     "N/A";
 
   const url = raw.url ?? raw.tweetUrl ?? "N/A";
+  const createdAt = raw.createdAt ?? "N/A";
 
   const text = raw.fullText ?? raw.full_text ?? raw.text ?? "";
 
@@ -86,5 +89,5 @@ export function normalizePost(raw: RawPost): NormalizedPost {
     raw.bookmarkCount ?? raw.bookmark_count ?? "N/A",
   );
 
-  return { author, url, text, likes, comments, reposts, bookmarks };
+  return { author, url, createdAt, text, likes, comments, reposts, bookmarks };
 }
